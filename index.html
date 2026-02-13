@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>御花典｜尊榮告別式花禮・高架花籃專業配送・24H在線訂製</title>
+    <meta name="description" content="御花典提供全台最高質感的喪禮花籃配送服務。首創即時直式輓聯預覽，確保每一份思念都完美呈現。">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --brand-gold: #A68D5F; --brand-dark: #2D2E2C; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FAF9F6; -webkit-font-smoothing: antialiased; }
+        .serif { font-family: 'Noto Serif TC', serif; }
+        .vertical-text { writing-mode: vertical-rl; }
+        
+        /* 隱藏滾動條但保持滑動 */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        /* 表單焦點特效 */
+        .input-underline { border-bottom: 1px solid #E5E7EB; transition: border-color 0.4s ease; }
+        .input-underline:focus { border-color: var(--brand-dark); outline: none; }
+        
+        /* 模擬 JForyou 的平滑轉場 */
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <nav class="sticky top-0 z-[100] bg-white/80 backdrop-blur-lg border-b border-gray-100 px-6 py-4 flex justify-between items-center">
+        <div class="flex flex-col">
+            <h1 class="serif text-xl md:text-2xl font-bold tracking-[0.4em] text-slate-900">御花典</h1>
+            <p class="text-[8px] text-[#A68D5F] tracking-[0.2em] font-bold uppercase italic">Premium Funeral Florist</p>
+        </div>
+        <div class="hidden md:flex gap-10 text-[10px] tracking-[0.3em] font-bold text-gray-400 uppercase">
+            <a href="#" class="text-black border-b border-black pb-1">產品目錄</a>
+            <a href="#" class="hover:text-black transition-colors">配送流程</a>
+            <a href="#" class="hover:text-black transition-colors">聯絡我們</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <div class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12 lg:p-10 fade-in">
+        
+        <div class="lg:col-span-7 space-y-6">
+            <div class="aspect-[4/5] bg-white lg:rounded-2xl overflow-hidden shadow-2xl relative">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=1200" alt="喪禮花籃" class="w-full h-full object-cover">
+                <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-[9px] tracking-widest font-bold border border-white shadow-sm">經典白百合系列</div>
+            </div>
+            
+            <div class="p-6 lg:p-0 space-y-4">
+                <div class="flex justify-between items-end">
+                    <h2 class="serif text-3xl md:text-5xl font-medium text-gray-900 leading-tight">典雅追思・高架花籃</h2>
+                    <p class="text-2xl font-light text-[#A68D5F] serif">NT$ 4,500</p>
+                </div>
+                <div class="flex gap-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest pt-4 border-t border-gray-100">
+                    <span>數量：一對</span> <span class="mx-2">|</span> <span>含運費與卡片</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 px-4 pb-24">
+            <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-gray-50 sticky top-28">
+                <h3 class="text-sm font-bold tracking-[0.3em] mb-10 border-l-4 border-[#2D2E2C] pl-4">訂製詳情</h3>
+                
+                <form id="orderForm" class="space-y-8 text-sm">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">往生者姓名</label>
+                            <input type="text" id="nameInput" required class="w-full py-2 bg-transparent input-underline serif text-xl" placeholder="例：王公小明">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">稱謂性別</label>
+                            <select id="genderSelect" class="w-full py-2 bg-transparent border-b border-gray-100 outline-none text-gray-600">
+                                <option value="male">先生 (男)</option>
+                                <option value="female">女士 (女)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">配送地點 (殯儀館/廳別)</label>
+                        <input type="text" required class="w-full py-2 bg-transparent input-underline" placeholder="例：台北第一殯儀館 景行廳">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">公祭日期時間</label>
+                            <input type="datetime-local" required class="w-full py-2 bg-transparent border-b border-gray-100 text-gray-500">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">聯絡電話</label>
+                            <input type="tel" required class="w-full py-2 bg-transparent input-underline" placeholder="用於回傳照片">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">送花人全銜 (下款)</label>
+                        <input type="text" id="senderInput" required class="w-full py-2 bg-transparent input-underline font-medium" placeholder="例：○○科技 董事長 王大同">
+                    </div>
+
+                    <div class="mt-12 bg-[#FAF9F6] p-8 md:p-12 border border-gray-100 rounded-3xl relative shadow-inner flex justify-between items-center h-72 md:h-80">
+                        <div class="absolute top-4 right-6 text-[8px] text-gray-300 font-bold italic tracking-widest uppercase">Traditional Banner Preview</div>
+                        <div id="prevTop" class="vertical-text serif text-sm font-bold text-gray-500 tracking-tighter">王公小明 先生 千古</div>
+                        <div id="prevMid" class="vertical-text serif text-4xl md:text-5xl font-bold tracking-[0.5em] text-slate-800">駕鶴西歸</div>
+                        <div id="prevBot" class="vertical-text serif text-sm font-bold text-gray-500 flex items-end">王大同 敬輓</div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#2D2E2C] text-white py-6 rounded-full serif tracking-[0.5em] text-lg hover:bg-black transition-all shadow-xl active:scale-[0.98] flex justify-center items-center gap-2">
+                        確認資訊立即預訂 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t p-4 flex justify-between items-center z-[110] shadow-[0_-5px_20px_rgba(0,0,0,0.05)] px-8">
+        <div class="flex flex-col">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">總金額</span>
+            <span class="serif text-xl font-bold text-[#A68D5F]">NT$ 4,500</span>
+        </div>
+        <button onclick="document.getElementById('orderForm').scrollIntoView({behavior: 'smooth'})" class="bg-[#2D2E2C] text-white px-10 py-3.5 rounded-full serif tracking-widest text-xs font-bold shadow-lg">立即訂購</button>
+    </div>
+
+    <script>
+        const nameIn = document.getElementById('nameInput');
+        const genIn = document.getElementById('genderSelect');
+        const sendIn = document.getElementById('senderInput');
+
+        function updateCard() {
+            const suffix = genIn.value === 'male' ? '先生 千古' : '女士 仙逝';
+            document.getElementById('prevTop').innerText = nameIn.value ? `${nameIn.value} ${suffix}` : "往生者 尊稱";
+            document.getElementById('prevBot').innerText = sendIn.value ? `${sendIn.value} 敬輓` : "送花人 敬輓";
+        }
+
+        [nameIn, genIn, sendIn].forEach(el => el.addEventListener('input', updateCard));
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.querySelector('button').innerText = "處理中...";
+            setTimeout(() => {
+                alert("【御花典】訂單已傳送成功！\n專人將於 10 分鐘內與您聯繫確認細節。");
+                this.querySelector('button').innerHTML = '確認資訊立即預訂';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
