@@ -173,6 +173,45 @@
                 document.getElementById('roomInput').placeholder = "請輸入 " + hall + " 的具體廳別";
             }
         }
+        // 在你的 index.html 腳本中加入
+async function initAutoSearch() {
+    const searchResult = document.getElementById('searchResult');
+    
+    try {
+        // 讀取你 GitHub 上的 json (加上 timestamp 避免瀏覽器快取舊資料)
+        const response = await fetch(`funeral_data.json?t=${new Date().getTime()}`);
+        const data = await response.json();
+        
+        const today = new Date().toISOString().split('T')[0];
+        const schedule = data[today];
+
+        if (schedule && schedule.length > 0) {
+            searchResult.innerHTML = '<p class="text-[10px] font-bold text-blue-500 mb-2">● 今日課表已同步，請選擇亡者：</p>';
+            schedule.forEach(item => {
+                const btn = document.createElement('div');
+                btn.className = "cursor-pointer p-3 mb-2 bg-slate-50 hover:bg-blue-50 rounded-lg border border-transparent hover:border-blue-200 transition-all text-xs flex justify-between items-center";
+                btn.innerHTML = `
+                    <span><b>${item.hall}</b> | ${item.name}</span>
+                    <span class="text-[10px] text-gray-400">${item.time}</span>
+                `;
+                btn.onclick = () => {
+                    document.getElementById('nameInput').value = item.name.replace('○', ''); // 讓客戶補齊或直接使用
+                    document.getElementById('genderSelect').value = item.gender;
+                    document.getElementById('roomInput').value = item.hall;
+                    updateCard(); // 觸發輓聯預覽更新
+                };
+                searchResult.appendChild(btn);
+            });
+            searchResult.classList.remove('hidden');
+        }
+    } catch (err) {
+        console.log("自動課表載入失敗，轉為手動輸入模式");
+    }
+}
+
+// 確保頁面載入後執行
+document.addEventListener('DOMContentLoaded', initAutoSearch);
+
     </script>
 </body>
 </html>
