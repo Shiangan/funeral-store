@@ -2,24 +2,26 @@ import requests
 import json
 from datetime import datetime
 
-# 模擬抓取台北市殯葬處公開資料 (以台北二殯為例)
-def fetch_taipei_funeral():
-    # 這裡對接政府開放資料 API 或 網頁解析邏輯
-    # 範例資料格式
+def fetch_funeral_data():
+    # 這裡未來可以接入各縣市 API
+    # 目前先以「當日測試資料」確保您的網頁能跑通
     today = datetime.now().strftime('%Y-%m-%d')
-    mock_data = {
+    
+    # 實際營運時，這裡會透過 requests.get() 抓取政府官網資料
+    data = {
         today: [
-            {"name": "陳府大山", "hall": "景行廳", "time": "08:00", "gender": "male"},
-            {"name": "王府淑芬", "hall": "至德廳", "time": "10:00", "gender": "female"},
-            {"name": "李府金城", "hall": "崇義廳", "time": "13:30", "gender": "male"}
+            {"name": "張○山", "hall": "景行廳", "time": "08:30", "gender": "male"},
+            {"name": "李○美", "hall": "至德廳", "time": "10:00", "gender": "female"},
+            {"name": "王○明", "hall": "懷德廳", "time": "13:00", "gender": "male"}
         ]
     }
-    return mock_data
-
-def save_data():
-    data = fetch_taipei_funeral()
-    with open('funeral_data.json', 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+    return data
 
 if __name__ == "__main__":
-    save_data()
+    try:
+        results = fetch_funeral_data()
+        with open('funeral_data.json', 'w', encoding='utf-8') as f:
+            json.dump(results, f, ensure_ascii=False, indent=4)
+        print("Success: Data updated.")
+    except Exception as e:
+        print(f"Error: {e}")
