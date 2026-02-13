@@ -212,6 +212,45 @@ async function initAutoSearch() {
 // 確保頁面載入後執行
 document.addEventListener('DOMContentLoaded', initAutoSearch);
 
-    </script>
+
+    async function loadFuneralSchedule() {
+    const resultArea = document.getElementById('searchResult'); // 確保 HTML 有這個 ID
+    try {
+        // 使用相對路徑，並加上時間戳防止瀏覽器存取舊的 json 檔案
+        const response = await fetch(`./funeral_data.json?v=${new Date().getTime()}`);
+        if (!response.ok) throw new Error('檔案讀取失敗');
+        
+        const data = await response.json();
+        const today = new Date().toISOString().split('T')[0];
+        const list = data[today];
+
+        if (list && list.length > 0) {
+            resultArea.innerHTML = '<p class="text-[10px] text-blue-600 font-bold mb-3 italic">● 今日雲端課表已同步</p>';
+            list.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "p-3 mb-2 bg-blue-50/50 border border-blue-100 rounded-xl cursor-pointer hover:bg-blue-100 transition-all";
+                div.innerHTML = `<div class="flex justify-between text-xs">
+                    <span class="font-bold text-slate-700">${item.hall}</span>
+                    <span class="text-slate-500">${item.time} | ${item.name}</span>
+                </div>`;
+                div.onclick = () => {
+                    document.getElementById('nameInput').value = item.name;
+                    document.getElementById('genderSelect').value = item.gender;
+                    document.getElementById('roomInput').value = item.hall;
+                    if(typeof updateCard === 'function') updateCard(); // 更新預覽卡片
+                };
+                resultArea.appendChild(div);
+            });
+            resultArea.classList.remove('hidden');
+        }
+    } catch (err) {
+        console.error("無法載入今日課表:", err);
+    }
+}
+
+// 頁面載入完成後啟動
+document.addEventListener('DOMContentLoaded', loadFuneralSchedule);
+        <script>
+
 </body>
 </html>
