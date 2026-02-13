@@ -1,0 +1,26 @@
+name: Update Funeral Data
+on:
+  schedule:
+    - cron: '0 22 * * *' # 每天 UTC 22:00 (台灣時間早上 6:00)
+  workflow_dispatch: # 也可以手動觸發
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run Crawler
+        run: python crawler.py
+      - name: Commit and Push
+        run: |
+          git config --global user.name "AutoUpdater"
+          git config --global user.email "auto@github.com"
+          git add funeral_data.json
+          git commit -m "更新今日課表: $(date)"
+          git push
